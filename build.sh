@@ -30,7 +30,7 @@ rm -rf $builddir
 mkdir -p $builddir
 cd $builddir
 
-../trunk/configure --prefix=$installdir $1 --with-gnutls --without-jpeg --without-png --without-tiff --without-gif --without-xaw3d --without-xpm || exit 2
+../trunk/configure --prefix=$installdir $1 --without-jpeg --without-png --without-tiff --without-gif --without-xaw3d --without-xpm || exit 2
 make || ../fix.sh || make || exit 3
 make all || exit 4
 rm -rf $installdir
@@ -55,12 +55,12 @@ cp -L /usr/lib/libgdbm.so.3 $installdir/lib/libgdbm.so
 emacsvers=`cd $installdir/share/emacs; ls -d [0-9]*| head -n 1`
 
 # emacs-jabber
-cd $emacsjabber
-git pull
-autoreconf -i -f  || exit 7
-./configure EMACS=/home/fyue/emacs-latest/bin/emacs --prefix=/home/fyue/emacs-latest  || exit 8
-make  || exit 9 
-make install || exit 10
+# cd $emacsjabber
+# git pull
+# autoreconf -i -f  || exit 7
+# ./configure EMACS=/home/fyue/emacs-latest/bin/emacs --prefix=/home/fyue/emacs-latest  || exit 8
+# make  || exit 9 
+# make install || exit 10
 
 cd /home/fyue
 rm -f emacs-latest-$date.tar.bz2
